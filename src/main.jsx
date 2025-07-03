@@ -12,8 +12,8 @@ import BackToTop from './components/BackToTop'
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
+    <div className="w-full">
+    <Navbar />
       <Hero />
       <About />
       <VisionMission />
