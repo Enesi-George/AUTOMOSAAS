@@ -2,6 +2,7 @@ import React from "react"
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin } from "lucide-react"
 import { Button } from "./ui/Button"
+import AIChat from "./AIChat"
 
 const ContactFooter = () => {
   return (
@@ -18,95 +19,11 @@ const ContactFooter = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
           <p className="text-xl text-gray-600">
-            Get in touch with us for more information about our services.
+            Chat with our AI Assistant to get in touch with us for more information about our services.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div>
-            <form className="bg-white p-8 rounded-xl shadow-md">
-              <div className="mb-6">
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-primary focus:border-blue-primary"
-                  required
-                />
-              </div>
-              <div className="mb-6">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-primary focus:border-blue-primary"
-                  required
-                />
-              </div>
-              <div className="mb-6">
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows="4"
-                  className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-primary focus:border-blue-primary"
-                  required
-                ></textarea>
-              </div>
-              <Button type="submit" size="lg" className="w-full bg-green-600 hover:bg-green-500">
-                Send Message
-              </Button>
-            </form>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="flex flex-col space-y-8"
-          >
-            <div className="flex items-center space-x-4">
-              <MapPin className="h-8 w-8 text-green-primary" />
-              <div>
-                <h4 className="font-semibold text-lg text-gray-900">
-                  Our Office
-                </h4>
-                <p className="text-gray-600">1234 Main Street, Nairobi, Kenya</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Mail className="h-8 w-8 text-blue-primary" />
-              <div>
-                <h4 className="font-semibold text-lg text-gray-900">Email Us</h4>
-                <p className="text-gray-600">info@ticketertransports.com</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Phone className="h-8 w-8 text-red-500" />
-              <div>
-                <h4 className="font-semibold text-lg text-gray-900">
-                  Call Us
-                </h4>
-                <p className="text-gray-600">+254 712 345678</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+<AIChat />
       </motion.section>
 
       {/* Footer */}

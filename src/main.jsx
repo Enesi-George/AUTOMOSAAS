@@ -20,7 +20,7 @@ const App = () => {
       <Services />
       <WhyChooseUs />
       <ContactFooter />
-      <BackToTop />
+      {/* <BackToTop /> */}
     </div>
   )
 }
