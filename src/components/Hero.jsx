@@ -22,7 +22,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl lg:text-7xl font-bold text-gray-900 mb-6"
           >
-            Driving the Future of
+            Driving the Future of {" "}
             <span className="text-green-primary">Clean Transport</span>
           </motion.h1>
           <motion.p
@@ -105,13 +105,13 @@ const Hero = () => {
                 </motion.div>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white/90 rounded-2xl p-6 text-center shadow-lg wrap-anywhere"
+                  className="bg-white/90 rounded-2xl p-6 text-center shadow-lg"
                 >
                   <Code className="h-12 w-12 text-orange-600 mx-auto mb-4" />
                   <h3 className="font-semibold text-gray-900 mb-2">
                     Software as a service (SAAS)
                   </h3>
-                  <p className="text-sm text-gray-600 ">
+                  <p className="text-sm text-gray-600  wrap-anywhere ">
                     Transformative digital solution
                   </p>
                 </motion.div>
