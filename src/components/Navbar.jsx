@@ -1,18 +1,18 @@
-import React, { useState } from "react"
-import { motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
-import { cn } from "../lib/utils"
-import logo from "../../public/ttrans.png"
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { cn } from "../lib/utils";
+import logo from "../../public/ttrans.png";
 
 const menuItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Services", href: "#services" },
   { name: "Contact", href: "#contact" },
-]
+];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <motion.nav
@@ -26,7 +26,9 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex justify-content-center align-items-center space-x-1.5  ">
             <img src={logo} alt="T-trans-logo" width={40} height={40} />
-            <h1 className="text-xl font-bold text-green-600 my-auto">Ticketer Transportations</h1>
+            <h1 className="text-xl font-bold text-green-600 my-auto">
+              Ticketer Transportations
+            </h1>
           </div>
 
           {/* Desktop Menu */}
@@ -66,7 +68,9 @@ const Navbar = () => {
       {/* Mobile menu */}
       <motion.div
         initial={false}
-        animate={isOpen ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
+        animate={
+          isOpen ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }
+        }
         transition={{ duration: 0.3 }}
         className="md:hidden overflow-hidden bg-white border-t border-gray-200"
       >
@@ -76,7 +80,13 @@ const Navbar = () => {
               key={item.name}
               href={item.href}
               className="text-gray-700 hover:text-green-600 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                const el = document.querySelector(item.href);
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth" });
+                  setTimeout(() => setIsOpen(false), 500);
+                }
+              }}
             >
               {item.name}
             </a>
@@ -84,7 +94,7 @@ const Navbar = () => {
         </div>
       </motion.div>
     </motion.nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
