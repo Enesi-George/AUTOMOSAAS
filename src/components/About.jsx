@@ -79,7 +79,7 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold text-gray-900 mb-6">About Ticketer Transportations</h2>
+          <h2 className="md:text-5xl text-4xl font-bold text-gray-900 mb-6">About Ticketer Transportations</h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
             We are pioneering the future of sustainable transportation in Africa through innovative energy solutions, 
             smart mobility systems, and transformative technology that connects communities while protecting our environment.

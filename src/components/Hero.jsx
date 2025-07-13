@@ -81,7 +81,7 @@ const Hero = () => {
               <div className="grid grid-cols-2 gap-4">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white/90 rounded-2xl p-6 text-center shadow-lg"
+                  className="bg-white/90 rounded-2xl p-6 text-center shadow-lg "
                 >
                   <Zap className="h-12 w-12 text-blue-primary mx-auto mb-4" />
                   <h3 className="font-semibold text-gray-900 mb-2">
@@ -93,7 +93,7 @@ const Hero = () => {
                 </motion.div>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white/90 rounded-2xl p-6 text-center shadow-lg"
+                  className="bg-white/90 rounded-2xl p-6 text-center shadow-lg "
                 >
                   <Leaf className="h-12 w-12 text-green-primary mx-auto mb-4" />
                   <h3 className="font-semibold text-gray-900 mb-2">
@@ -105,19 +105,19 @@ const Hero = () => {
                 </motion.div>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white/90 rounded-2xl p-6 text-center shadow-lg"
+                  className="bg-white/90 rounded-2xl p-6 text-center shadow-lg wrap-anywhere"
                 >
                   <Code className="h-12 w-12 text-orange-600 mx-auto mb-4" />
                   <h3 className="font-semibold text-gray-900 mb-2">
                     Software as a service (SAAS)
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 ">
                     Transformative digital solution
                   </p>
                 </motion.div>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white/90 rounded-2xl p-6 text-center shadow-lg"
+                  className="bg-white/90 rounded-2xl p-6 text-center shadow-lg "
                 >
                   <Brain className="h-12 w-12 text-indigo-600 mx-auto mb-4" />
                   <h3 className="font-semibold text-gray-900 mb-2">

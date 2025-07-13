@@ -33,6 +33,11 @@ html {
   font-family: 'Inter', sans-serif;
 }
 
+#root{
+  overflow-x: hidden!important;
+
+}
+
 body {
   font-family: 'Inter', sans-serif;
 }
