@@ -31,11 +31,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl text-gray-600 mb-8 leading-relaxed"
           >
-            {/* Ticketer Transportations is an innovative start-up transforming
-            Africa's transportation and energy sectors through smart mobility
-            solutions, green energy research, custom software development, and
-            sustainable infrastructure consulting */}
-            Ticketer Transportations is revolutionizing Africa's movement
+            
+            Automatons mobility and software services (AUTOMOSAAS) is revolutionizing Africa's movement
             through sustainable mobility solutions, renewable energy innovation,
             and transformative digital technologies.
           </motion.p>

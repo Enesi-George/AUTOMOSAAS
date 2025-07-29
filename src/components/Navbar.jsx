@@ -27,7 +27,7 @@ const Navbar = () => {
           <div className="flex justify-content-center align-items-center space-x-1.5  ">
             <img src={logo} alt="T-trans-logo" width={40} height={40} />
             <h1 className="text-xl font-bold text-green-600 my-auto">
-              Ticketer Transportations
+              AUTOMOSAAS
             </h1>
           </div>
 

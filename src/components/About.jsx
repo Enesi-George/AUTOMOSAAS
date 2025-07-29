@@ -49,7 +49,7 @@ const About = () => {
     {
       year: "2023",
       title: "Company Founded",
-      description: "Ticketer Transportations was established with a vision to revolutionize Africa's transportation landscape."
+      description: "Automatons mobility and software services (AUTOMOSAAS) was established with a vision to revolutionize Africa's transportation landscape."
     },
     {
       year: "2024",
@@ -79,7 +79,7 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="md:text-5xl text-4xl font-bold text-gray-900 mb-6">About Ticketer Transportations</h2>
+          <h2 className="md:text-5xl text-4xl font-bold text-gray-900 mb-6">About Us</h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
             We are pioneering the future of sustainable transportation in Africa through innovative energy solutions, 
             smart mobility systems, and transformative technology that connects communities while protecting our environment.
@@ -122,7 +122,7 @@ const About = () => {
             <h3 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h3>
             <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
               <p>
-                Ticketer Transportations was founded with a bold vision to transform Africa's transportation landscape, 
+                Automatons mobility and software services was founded with a bold vision to transform Africa's transportation landscape, 
                 addressing the continent's unique mobility challenges while unlocking its immense potential for sustainable development.
               </p>
               <p>
