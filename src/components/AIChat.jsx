@@ -48,7 +48,7 @@ const AIChat = () => {
   function createInitialMessage() {
     return {
       id: Date.now(),
-      text: "Hello! I'm your AI assistant for Automatons mobility and software services(AUTOMOSAAS). I can help you with information about our sustainable transportation solutions, green energy research, smart mobility, and software development services. How can I assist you today?",
+      text: "Hello! I'm your AI assistant for Automatons mobility and software services(AUTOSAAS). I can help you with information about our sustainable transportation solutions, green energy research, smart mobility, and software development services. How can I assist you today?",
       isBot: true,
       timestamp: new Date(),
     };
@@ -157,7 +157,7 @@ const AIChat = () => {
           "speak",
         ],
         response:
-          "You can contact us at info@automosaas.com or call +254 712 345678. Would you like me to help you send a message to our team?",
+          "You can contact us at autosaasinfo@gmail.com or call +2348159450874. Would you like me to help you send a message to our team?",
       },
 
       // Services Overview
@@ -201,7 +201,7 @@ const AIChat = () => {
           "history",
         ],
         response:
-          "Automatons mobility and software services(AUTOMOSAAS) is revolutionizing Africa's movement through sustainable mobility solutions, renewable energy innovation, and transformative digital technologies.",
+          "Automatons mobility and software services(AUTOSAAS) is revolutionizing Africa's movement through sustainable mobility solutions, renewable energy innovation, and transformative digital technologies.",
       },
     ];
 
@@ -233,7 +233,7 @@ const AIChat = () => {
         "greetings",
       ])
     ) {
-      return "Hello! Welcome to Automatons mobility and software services(AUTOMOSAAS). I'm here to help you learn about our sustainable transportation solutions, green energy research, smart mobility, and software development services. What would you like to know?";
+      return "Hello! Welcome to Automatons mobility and software services(AUTOSAAS). I'm here to help you learn about our sustainable transportation solutions, green energy research, smart mobility, and software development services. What would you like to know?";
     }
 
     // Goodbye responses
@@ -247,7 +247,7 @@ const AIChat = () => {
         "farewell",
       ])
     ) {
-      return "Thank you for your interest in Automatons mobility and software services(AUTOMOSAAS)! Feel free to reach out anytime at info@automosaas.com or call +254 712 345678. Have a great day!";
+      return "Thank you for your interest in Automatons mobility and software services(AUTOSAAS)! Feel free to reach out anytime at autosaasinfo@gmail.com.com or call +254 712 345678. Have a great day!";
     }
 
     // Green Energy & Renewable Energy
@@ -328,7 +328,7 @@ const AIChat = () => {
         "data",
       ])
     ) {
-      return "Technology and innovation are at the heart of everything we do at Automatons mobility and software services(AUTOMOSAAS). We leverage cutting-edge technologies including:\n\n• Artificial Intelligence and Machine Learning\n• Internet of Things (IoT) solutions\n• Big Data analytics\n• Blockchain for transparency\n• Cloud computing infrastructure\n\nWhich technology aspect interests you most?";
+      return "Technology and innovation are at the heart of everything we do at Automatons mobility and software services(AUTOSAAS). We leverage cutting-edge technologies including:\n\n• Artificial Intelligence and Machine Learning\n• Internet of Things (IoT) solutions\n• Big Data analytics\n• Blockchain for transparency\n• Cloud computing infrastructure\n\nWhich technology aspect interests you most?";
     }
 
     // Africa-specific questions
@@ -398,11 +398,11 @@ const AIChat = () => {
 
   const getContextualDefaultResponse = () => {
     const responses = [
-      "I'd be happy to help you with more information about Automatons mobility and software services(AUTOMOSAAS). Could you please be more specific about what you'd like to know?",
+      "I'd be happy to help you with more information about Automatons mobility and software services(AUTOSAAS). Could you please be more specific about what you'd like to know?",
       "That's an interesting question! Could you tell me more about what specific aspect of our services you're interested in?",
       "I want to make sure I give you the most relevant information. Are you asking about our green energy solutions, smart mobility, software development, or consulting services?",
       "Thanks for your question! I can help you with information about our services, pricing, contact details, or any other questions you might have. What would you like to know?",
-      "I'm here to assist you with information about Automatons mobility and software services(AUTOMOSAAS). Feel free to ask about our sustainable transportation solutions, technology services, or how we can help your business!",
+      "I'm here to assist you with information about Automatons mobility and software services(AUTOSAAS). Feel free to ask about our sustainable transportation solutions, technology services, or how we can help your business!",
     ];
 
     return responses[Math.floor(Math.random() * responses.length)];
@@ -450,7 +450,7 @@ const AIChat = () => {
         return await handleConfirmStep(trimmedMessage.toLowerCase());
       default:
         resetDetailCollection();
-        return "I'm here to help! What would you like to know about Automatons mobility and software services(AUTOMOSAAS)?";
+        return "I'm here to help! What would you like to know about Automatons mobility and software services(AUTOSAAS)?";
     }
   };
 
@@ -497,7 +497,7 @@ Would you like me to send this message to our team? Type 'yes' to confirm or 'no
         if (result.success) {
           return "Your message has been sent successfully! Our team will get back to you within 24 hours.\n\nIs there anything else I can help you with?";
         }
-        return "There was an issue sending your message. Please try again or contact us directly at info@automosaas.com";
+        return "There was an issue sending your message. Please try again or contact us directly at autosaasinfo@gmail.com";
       } catch (error) {
         resetDetailCollection();
         return "Failed to send message. Please try again later or contact us directly.";
@@ -703,7 +703,7 @@ Would you like me to send this message to our team? Type 'yes' to confirm or 'no
               <Bot size={20} />
               <div>
                 <h3 className="font-semibold">AI Assistant</h3>
-                <p className="text-xs opacity-90">Automatons mobility and software services(AUTOMOSAAS)</p>
+                <p className="text-xs opacity-90">Automatons mobility and software services(AUTOSAAS)</p>
               </div>
             </div>
             <button

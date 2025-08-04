@@ -10,7 +10,7 @@ const services = [
     title: "Green Energy Research",
     description: "Our pioneering research aims to redefine energy efficiency and transform transport in Africa.",
     features: ["Foundational R&D", "Core Research", "Academic Partnerships", "Innovative Methods"],
-    detailedDescription: "At Ticketter Transports, our green energy research stands at the heart of our mission to become Africa’s trailblazer in clean, sustainable transportation. We are not just following global trends—we’re determined to set them. Our pioneering work delves into the dynamic relationship between pressure, speed, and flow rate within energy systems. By exploring innovative methods to decouple these interdependencies in closed-loop systems, we aim to redefine the limits of energy efficiency and transform the future of transport—on the continent and beyond.",
+    detailedDescription: "At AUTOSAAS, our green energy research stands at the heart of our mission to become Africa’s trailblazer in clean, sustainable transportation. We are not just following global trends—we’re determined to set them. Our pioneering work delves into the dynamic relationship between pressure, speed, and flow rate within energy systems. By exploring innovative methods to decouple these interdependencies in closed-loop systems, we aim to redefine the limits of energy efficiency and transform the future of transport—on the continent and beyond.",
     benefits: ["Position as a leader", "Innovative edge", "Sustainability goals alignment", "Enhanced energy efficiency"]
   },
   {
@@ -18,7 +18,7 @@ const services = [
     title: "Sustainable Green Energy Implementation",
     description: "Implementing next-gen sustainable energy solutions for real-world transport systems.",
     features: ["Infrastructure Design", "Renewable Energy Integration", "Smart Energy Management", "Community Engagement"],
-    detailedDescription: "At Ticketter Transports, our journey starts with green energy. We are pushing the envelope on infrastructure design and renewable energy integration, developing prototypes that incorporate our closed-loop energy principles. Through strategic partnerships, we aim to power fleet operations and begin urban corridor projects. From energy audits to AI-based monitoring tools, our commitment is to provide reliable, eco-efficient transport solutions that redefine boundaries.",
+    detailedDescription: "At AUTOSAAS, our journey starts with green energy. We are pushing the envelope on infrastructure design and renewable energy integration, developing prototypes that incorporate our closed-loop energy principles. Through strategic partnerships, we aim to power fleet operations and begin urban corridor projects. From energy audits to AI-based monitoring tools, our commitment is to provide reliable, eco-efficient transport solutions that redefine boundaries.",
     benefits: ["Eco-efficient transport", "Community and policy engagement", "Scalable and impactful solutions", "Innovative design"]
   },
   {
@@ -26,7 +26,7 @@ const services = [
     title: "Smart Mobility Solutions",
     description: "Merging sustainability with innovation to reshape how Africa moves.",
     features: ["AI-Driven Fleet Management", "Eco-Connected Vehicles", "MaaS Platforms", "Smart Infrastructure"],
-    detailedDescription: "At Ticketter Transports, our Smart Mobility Solutions merge sustainability with innovation to reshape how Africa moves. We harness data, technology, and green infrastructure to create transportation systems that are efficient, intelligent, and user-focused. Key solutions include AI-driven fleet management, eco-connected vehicles, and MaaS platforms that unify public transit, ride-sharing, and more.",
+    detailedDescription: "At AUTOSAAS, our Smart Mobility Solutions merge sustainability with innovation to reshape how Africa moves. We harness data, technology, and green infrastructure to create transportation systems that are efficient, intelligent, and user-focused. Key solutions include AI-driven fleet management, eco-connected vehicles, and MaaS platforms that unify public transit, ride-sharing, and more.",
     benefits: ["Efficiency and innovation", "User-focused systems", "Integration ease", "Real-time data insights"]
   },
   {
@@ -34,7 +34,7 @@ const services = [
     title: "Renewable Energy Consulting Services",
     description: "Empowering Africa to transition into green energy solutions tailored for impact.",
     features: ["Energy Audits", "System Design", "Policy Advisory", "Capacity Building"],
-    detailedDescription: "At Ticketter Transports, we don’t just build sustainable systems—we help others do the same. Our Renewable Energy Consulting Services empower governments, businesses, and innovators across Africa to transition into green energy solutions tailored for impact. We offer energy audits, system design and integration, policy advisory, and capacity building to help Africa leapfrog into a clean energy future through collaboration, research, and smart design.",
+    detailedDescription: "At AUTOSAAS, we don’t just build sustainable systems—we help others do the same. Our Renewable Energy Consulting Services empower governments, businesses, and innovators across Africa to transition into green energy solutions tailored for impact. We offer energy audits, system design and integration, policy advisory, and capacity building to help Africa leapfrog into a clean energy future through collaboration, research, and smart design.",
     benefits: ["Collaborative design", "Regulatory guidance", "Community engagement", "Cutting-edge innovation"]
   },
   {
@@ -42,7 +42,7 @@ const services = [
     title: "Software Development Services (SaaS)",
     description: "Delivering transformative digital solutions with a human-centric approach.",
     features: ["Agentic AI", "Custom Development", "Cloud Solutions", "Enterprise Platforms"],
-    detailedDescription: "At Ticketter Transportations, we fuse cutting-edge technology with human-centric design to deliver transformative digital solutions. Our services are designed to unlock new levels of efficiency, insight, and innovation for businesses of all sizes. Our Software as a Service offerings include custom software development, agentic AI solutions, and scalable backend systems tailored to meet your needs.",
+    detailedDescription: "At AUTOSAAS, we fuse cutting-edge technology with human-centric design to deliver transformative digital solutions. Our services are designed to unlock new levels of efficiency, insight, and innovation for businesses of all sizes. Our Software as a Service offerings include custom software development, agentic AI solutions, and scalable backend systems tailored to meet your needs.",
     benefits: ["Innovative tech solutions", "Tailored experiences", "Operational efficiency", "Future-focused services"],
     saasSolutions: [
       { name: "E-commerce Platforms", description: "Complete online marketplace solutions for transportation services" },

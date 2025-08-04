@@ -49,7 +49,7 @@ const About = () => {
     {
       year: "2023",
       title: "Company Founded",
-      description: "Automatons mobility and software services (AUTOMOSAAS) was established with a vision to revolutionize Africa's transportation landscape."
+      description: "Automatons mobility and software services (AUTOSAAS) was established with a vision to revolutionize Africa's transportation landscape."
     },
     {
       year: "2024",

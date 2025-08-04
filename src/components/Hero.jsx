@@ -32,7 +32,7 @@ const Hero = () => {
             className="text-xl text-gray-600 mb-8 leading-relaxed"
           >
             
-            Automatons mobility and software services (AUTOMOSAAS) is revolutionizing Africa's movement
+            Automatons mobility and software services (AUTOSAAS) is revolutionizing Africa's movement
             through sustainable mobility solutions, renewable energy innovation,
             and transformative digital technologies.
           </motion.p>

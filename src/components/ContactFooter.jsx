@@ -32,7 +32,7 @@ const ContactFooter = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {/* Company Info */}
             <div>
-              <h3 className="text-2xl font-bold text-green-400 mb-4">AUTOMOSAAS</h3>
+              <h3 className="text-2xl font-bold text-green-400 mb-4">AUTOSAAS</h3>
               <p className="text-gray-300 mb-4 leading-relaxed">
                 Pioneering the future of sustainable transportation in Africa through innovative 
                 energy solutions and smart mobility systems.
@@ -117,19 +117,19 @@ const ContactFooter = () => {
                 <div className="flex items-start space-x-3">
                   <MapPin className="h-5 w-5 text-green-400 mt-1 flex-shrink-0" />
                   <span className="text-gray-300">
-                    1234 Main Street, Nairobi, Kenya
+                    38 arufa street, ojo-alaba, Lagos Nigeria.
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-green-400" />
                   <span className="text-gray-300">
-                    info@automosaas.com
+                    autosaasinfo@gmail.com
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-green-400" />
                   <span className="text-gray-300">
-                    +254 712 345678
+                    +2348159450874
                   </span>
                 </div>
               </div>
@@ -149,7 +149,7 @@ const ContactFooter = () => {
           <div className="border-t border-gray-700 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-400 text-sm mb-4 md:mb-0">
-                &copy; 2025 AUTOMOSAAS. All rights reserved.
+                &copy; 2025 AUTOSAAS. All rights reserved.
               </p>
               <div className="flex space-x-6 text-sm">
                 <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
