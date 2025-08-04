@@ -33,8 +33,7 @@ const Hero = () => {
           >
             
             Automatons mobility and software services (AUTOSAAS) is revolutionizing Africa's movement
-            through sustainable mobility solutions, renewable energy innovation,
-            and transformative digital technologies.
+            through sustainable mobility solutions, renewable energy innovation, transformative digital technologies and software solutions.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
