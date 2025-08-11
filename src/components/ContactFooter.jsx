@@ -1,8 +1,16 @@
-import React from "react"
-import { motion } from "framer-motion"
-import { Mail, Phone, MapPin } from "lucide-react"
-import { Button } from "./ui/Button"
-import AIChat from "./AIChat"
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Instagram,
+  Twitter,
+  Linkedin,
+} from "lucide-react";
+import { Button } from "./ui/Button";
+import AIChat from "./AIChat";
+import { Link } from "react-router-dom";
 
 const ContactFooter = () => {
   return (
@@ -19,11 +27,12 @@ const ContactFooter = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
           <p className="text-xl text-gray-600">
-            Chat with our AI Assistant to get in touch with us for more information about our services.
+            Chat with our AI Assistant to get in touch with us for more
+            information about our services.
           </p>
         </div>
 
-<AIChat />
+        <AIChat />
       </motion.section>
 
       {/* Footer */}
@@ -32,21 +41,23 @@ const ContactFooter = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {/* Company Info */}
             <div>
-              <h3 className="text-2xl font-bold text-green-400 mb-4">AUTOSAAS</h3>
+              <h3 className="text-2xl font-bold text-green-400 mb-4">
+                AUTOSAAS
+              </h3>
               <p className="text-gray-300 mb-4 leading-relaxed">
-                Pioneering the future of sustainable transportation in Africa through innovative 
-                energy solutions and smart mobility systems.
+                Pioneering the future of sustainable transportation in Africa
+                through innovative energy solutions and smart mobility systems.
               </p>
               <div className="flex space-x-4">
-                <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-500 cursor-pointer transition-colors">
-                  <span className="text-white font-bold text-sm">T</span>
-                </div>
-                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-500 cursor-pointer transition-colors">
-                  <span className="text-white font-bold text-sm">L</span>
-                </div>
-                <div className="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-500 cursor-pointer transition-colors">
-                  <span className="text-white font-bold text-sm">F</span>
-                </div>
+                <Link to={"#"}>
+                  <Instagram className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
+                </Link>
+                <Link to={"#"}>
+                  <Twitter className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
+                </Link>
+                <Link to={"#"}>
+                  <Linkedin className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
+                </Link>
               </div>
             </div>
 
@@ -55,22 +66,34 @@ const ContactFooter = () => {
               <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#home" className="text-gray-300 hover:text-green-400 transition-colors">
+                  <a
+                    href="#home"
+                    className="text-gray-300 hover:text-green-400 transition-colors"
+                  >
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#about" className="text-gray-300 hover:text-green-400 transition-colors">
+                  <a
+                    href="#about"
+                    className="text-gray-300 hover:text-green-400 transition-colors"
+                  >
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-gray-300 hover:text-green-400 transition-colors">
+                  <a
+                    href="#services"
+                    className="text-gray-300 hover:text-green-400 transition-colors"
+                  >
                     Services
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="text-gray-300 hover:text-green-400 transition-colors">
+                  <a
+                    href="#contact"
+                    className="text-gray-300 hover:text-green-400 transition-colors"
+                  >
                     Contact
                   </a>
                 </li>
@@ -82,28 +105,43 @@ const ContactFooter = () => {
               <h4 className="text-lg font-semibold mb-4">Our Services</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#services" className="text-gray-300 hover:text-green-400 transition-colors">
+                  <a
+                    href="#services"
+                    className="text-gray-300 hover:text-green-400 transition-colors"
+                  >
                     Fleet Management Solutions
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-gray-300 hover:text-green-400 transition-colors">
+                  <a
+                    href="#services"
+                    className="text-gray-300 hover:text-green-400 transition-colors"
+                  >
                     Electric Vehicle Infrastructure
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-gray-300 hover:text-green-400 transition-colors">
+                  <a
+                    href="#services"
+                    className="text-gray-300 hover:text-green-400 transition-colors"
+                  >
                     Smart Mobility Platforms
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-gray-300 hover:text-green-400 transition-colors">
+                  <a
+                    href="#services"
+                    className="text-gray-300 hover:text-green-400 transition-colors"
+                  >
                     Sustainable Transport Consulting
                   </a>
                 </li>
-            
+
                 <li>
-                  <a href="#services" className="text-gray-300 hover:text-green-400 transition-colors">
+                  <a
+                    href="#services"
+                    className="text-gray-300 hover:text-green-400 transition-colors"
+                  >
                     Software as a Service (SaaS)
                   </a>
                 </li>
@@ -112,7 +150,9 @@ const ContactFooter = () => {
 
             {/* Contact Info */}
             <div>
-              <h4 className="text-lg font-semibold mb-4">Contact Information</h4>
+              <h4 className="text-lg font-semibold mb-4">
+                Contact Information
+              </h4>
               <div className="space-y-3 text-sm">
                 <div className="flex items-start space-x-3">
                   <MapPin className="h-5 w-5 text-green-400 mt-1 flex-shrink-0" />
@@ -120,24 +160,23 @@ const ContactFooter = () => {
                     38 arufa street, ojo-alaba, Lagos Nigeria.
                   </span>
                 </div>
-                <div className="flex items-center space-x-3">
+                <Link
+                  to={"mailto:autosaasinfo@gmail.com"}
+                  className="flex items-center space-x-3"
+                >
                   <Mail className="h-5 w-5 text-green-400" />
-                  <span className="text-gray-300">
-                    autosaasinfo@gmail.com
-                  </span>
-                </div>
+                  <span className="text-gray-300">autosaasinfo@gmail.com</span>
+                </Link>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-green-400" />
-                  <span className="text-gray-300">
-                    +2348159450874
-                  </span>
+                  <span className="text-gray-300">+2348159450874</span>
                 </div>
               </div>
-              <Button 
+              <Button
                 className="mt-4 bg-green-600 hover:bg-green-500 text-white"
                 onClick={() => {
-                  const contactSection = document.getElementById('contact')
-                  contactSection?.scrollIntoView({ behavior: 'smooth' })
+                  const contactSection = document.getElementById("contact");
+                  contactSection?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
                 Get In Touch
@@ -152,13 +191,22 @@ const ContactFooter = () => {
                 &copy; 2025 AUTOSAAS. All rights reserved.
               </p>
               <div className="flex space-x-6 text-sm">
-                <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-green-400 transition-colors"
+                >
                   Privacy Policy
                 </a>
-                <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-green-400 transition-colors"
+                >
                   Terms of Service
                 </a>
-                <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-green-400 transition-colors"
+                >
                   Cookie Policy
                 </a>
               </div>
@@ -167,8 +215,7 @@ const ContactFooter = () => {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default ContactFooter
-
+export default ContactFooter;
