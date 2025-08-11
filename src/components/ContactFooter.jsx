@@ -7,6 +7,7 @@ import {
   Instagram,
   Twitter,
   Linkedin,
+  Facebook,
 } from "lucide-react";
 import { Button } from "./ui/Button";
 import AIChat from "./AIChat";
@@ -49,14 +50,27 @@ const ContactFooter = () => {
                 through innovative energy solutions and smart mobility systems.
               </p>
               <div className="flex space-x-4">
-                <Link to={"#"}>
+                <Link
+                  to={"https://www.instagram.com/automosaas/ "}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Instagram className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
                 </Link>
-                <Link to={"#"}>
+                {/* <Link to={"#"}>
                   <Twitter className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
                 </Link>
                 <Link to={"#"}>
                   <Linkedin className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
+                </Link> */}
+                <Link
+                  to={
+                    "https://www.facebook.com/people/Automatons-Mobility-and-Software-Services/61579161457339/?sk=about"
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Facebook className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
                 </Link>
               </div>
             </div>

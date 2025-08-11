@@ -17,6 +17,7 @@ import {
   MapPin,
   AlertCircle,
   Loader2,
+  Facebook,
 } from "lucide-react";
 import ScholarBanner from "../../../public/scholar-01.png";
 import StudentStudying from "../../../public/scholar-02.jpg";
@@ -607,14 +608,27 @@ Age: ${applicationData.age}
           </div>
 
           <div className="flex justify-center space-x-6 mt-12">
-            <Link to={"#"}>
+            <Link
+              to={"https://www.instagram.com/automosaas/ "}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Instagram className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
             </Link>
-            <Link to={"#"}>
+            {/* <Link to={"#"}>
               <Twitter className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
             </Link>
             <Link to={"#"}>
               <Linkedin className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
+            </Link> */}
+            <Link
+              to={
+                "https://www.facebook.com/people/Automatons-Mobility-and-Software-Services/61579161457339/?sk=about"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Facebook className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
             </Link>
           </div>
         </div>
