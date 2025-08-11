@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import logo from "../../public/ttrans.png";
+import logo from "/ttrans.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {

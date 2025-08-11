@@ -19,9 +19,9 @@ import {
   Loader2,
   Facebook,
 } from "lucide-react";
-import ScholarBanner from "../../../public/scholar-01.png";
-import StudentStudying from "../../../public/scholar-02.jpg";
-import HandShake from "../../../public/handshake.jpeg";
+import ScholarBanner from "/scholar-01.png";
+import StudentStudying from "/scholar-02.jpg";
+import HandShake from "/handshake.jpeg";
 import { Link } from "react-router-dom";
 
 // Configuration for Formspree

@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import Logo from '../../../../public/scholar-01.png';
+import Logo from '/scholar-01.png';
 
 const ScholarshipModal = ({ isOpen, onClose }) => {
   const navigate = useNavigate()
