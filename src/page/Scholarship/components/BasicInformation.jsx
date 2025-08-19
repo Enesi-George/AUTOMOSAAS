@@ -24,7 +24,7 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
 
   const validateStep = () => {
     const newErrors = {};
-    const { fullName, email, qualification, age, termsAccepted } = formData;
+    const { fullName, email, qualification, age, university, termsAccepted } = formData;
 
     if (!fullName.trim()) {
       newErrors.fullName = "Please enter your full name";
@@ -49,6 +49,10 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
       newErrors.age = "Please enter your age";
     } else if (parseInt(age) < 18) {
       newErrors.age = "Applicants must be 18 years or older";
+    }
+
+    if (!university) {
+      newErrors.university = "Please select your preferred university";
     }
 
     if (!termsAccepted) {
@@ -190,6 +194,49 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
         </div>
       </div>
 
+      {/* University Selection */}
+      <div>
+        <label className="block text-gray-700 font-semibold mb-2">
+          Preferred University *
+        </label>
+        <select
+          name="university"
+          value={formData.university}
+          onChange={handleInputChange}
+          className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors ${
+            errors.university ? "border-red-500" : "border-gray-300"
+          }`}
+        >
+          <option value="">Select your preferred university</option>
+          <option value="University of Tulsa">The University of Tulsa</option>
+          <option value="Harvard University" disabled className="text-gray-400">
+            Harvard University (Not Available)
+          </option>
+          <option value="Stanford University" disabled className="text-gray-400">
+            Stanford University (Not Available)
+          </option>
+          <option value="MIT" disabled className="text-gray-400">
+            Massachusetts Institute of Technology (Not Available)
+          </option>
+          <option value="University of California Berkeley" disabled className="text-gray-400">
+            University of California, Berkeley (Not Available)
+          </option>
+        </select>
+        {errors.university && (
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-red-600 text-sm mt-1 flex items-center"
+          >
+            <AlertCircle className="w-4 h-4 mr-1" />
+            {errors.university}
+          </motion.p>
+        )}
+        <p className="text-sm text-gray-500 mt-2">
+          Currently, only The University of Tulsa is available for applications. More universities will be added soon.
+        </p>
+      </div>
+
       {/* Terms and Conditions */}
       <div className="bg-gray-50 p-4 rounded-lg">
         <div className="flex items-start space-x-3">
@@ -229,7 +276,7 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
       </div>
 
       {/* Success Message */}
-      {formData.fullName && formData.email && formData.qualification && formData.age && formData.termsAccepted && (
+      {formData.fullName && formData.email && formData.qualification && formData.age && formData.university && formData.termsAccepted && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -251,7 +298,7 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
 
 BasicInformation.validateStep = (formData) => {
   const errors = {};
-  const { fullName, email, qualification, age, termsAccepted } = formData;
+  const { fullName, email, qualification, age, university, termsAccepted } = formData;
 
   if (!fullName?.trim()) {
     errors.fullName = "Please enter your full name";
@@ -276,6 +323,10 @@ BasicInformation.validateStep = (formData) => {
     errors.age = "Please enter your age";
   } else if (parseInt(age) < 18) {
     errors.age = "Applicants must be 18 years or older";
+  }
+
+  if (!university) {
+    errors.university = "Please select your preferred university";
   }
 
   if (!termsAccepted) {
