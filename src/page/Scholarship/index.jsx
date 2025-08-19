@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   CheckCircle,
@@ -12,217 +11,16 @@ import {
   Mail,
   Phone,
   Instagram,
-  Twitter,
-  Linkedin,
   MapPin,
-  AlertCircle,
-  Loader2,
   Facebook,
 } from "lucide-react";
 import ScholarBanner from "/scholar-01.png";
 import StudentStudying from "/scholar-02.jpg";
 import HandShake from "/handshake.jpeg";
 import { Link } from "react-router-dom";
-
-// Configuration for Formspree
-const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_URL;
-if (!FORMSPREE_ENDPOINT) {
-  console.error("Missing FORMSPREE_ENDPOINT environment variable!");
-}
+import ScholarshipForm from "./components/ScholarshipForm";
 
 const ScholarshipPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    qualification: "",
-    age: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsModalOpen(true);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-    // Clear any previous errors when user starts typing
-    if (submitStatus === "error") {
-      setSubmitStatus(null);
-      setErrorMessage("");
-    }
-  };
-
-  const validateForm = () => {
-    const { fullName, email, qualification, age } = formData;
-
-    if (!fullName.trim()) {
-      setErrorMessage("Please enter your full name");
-      return false;
-    }
-
-    if (fullName.trim().length < 2) {
-      setErrorMessage("Full name must be at least 2 characters long");
-      return false;
-    }
-
-    if (!email.trim()) {
-      setErrorMessage("Please enter your email address");
-      return false;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setErrorMessage("Please enter a valid email address");
-      return false;
-    }
-
-    if (!qualification) {
-      setErrorMessage("Please select your academic qualification");
-      return false;
-    }
-
-    if (!age) {
-      setErrorMessage("Please enter your age");
-      return false;
-    }
-
-    if (parseInt(age) < 18) {
-      setErrorMessage("Applicants must be 18 years or older");
-      return false;
-    }
-
-    return true;
-  };
-
-  const submitToFormspree = async (applicationData) => {
-    try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: applicationData.fullName,
-          email: applicationData.email,
-          qualification: applicationData.qualification,
-          age: applicationData.age,
-          message: `New scholarship application:
-          
-Name: ${applicationData.fullName}
-Email: ${applicationData.email}
-Academic Qualification: ${applicationData.qualification}
-Age: ${applicationData.age}
-
---- Submitted via AUTOSAAS Initiative Scholarship Application ---`,
-          _subject: "New AUTOSAAS Initiative Scholarship Application",
-          _replyto: applicationData.email,
-        }),
-      });
-
-      if (response.ok) {
-        return { success: true };
-      } else {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to submit application");
-      }
-    } catch (error) {
-      console.error("Formspree submission error:", error);
-      return { success: false, error: error.message };
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Reset previous status
-    setSubmitStatus(null);
-    setErrorMessage("");
-
-    // Validate form
-    if (!validateForm()) {
-      setSubmitStatus("error");
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const result = await submitToFormspree(formData);
-
-      if (result.success) {
-        setSubmitStatus("success");
-        // Reset form after successful submission
-        setFormData({
-          fullName: "",
-          email: "",
-          qualification: "",
-          age: "",
-        });
-      } else {
-        setSubmitStatus("error");
-        setErrorMessage(
-          result.error || "Failed to submit application. Please try again."
-        );
-      }
-    } catch (error) {
-      setSubmitStatus("error");
-      setErrorMessage("An unexpected error occurred. Please try again later.");
-      console.error("Application submission error:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const renderStatusMessage = () => {
-    if (submitStatus === "success") {
-      return (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 p-4 bg-green-100 border border-green-300 text-green-700 rounded-lg flex items-center"
-        >
-          <CheckCircle className="w-5 h-5 mr-2" />
-          <div>
-            <p className="font-semibold">Application submitted successfully!</p>
-            <p className="text-sm">
-              We will review your application and get back to you at the
-              earliest possible time.
-            </p>
-          </div>
-        </motion.div>
-      );
-    }
-
-    if (submitStatus === "error") {
-      return (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 p-4 bg-red-100 border border-red-300 text-red-700 rounded-lg flex items-center"
-        >
-          <AlertCircle className="w-5 h-5 mr-2" />
-          <div>
-            <p className="font-semibold">Application submission failed</p>
-            <p className="text-sm">
-              {errorMessage || "Please try again or contact us directly."}
-            </p>
-          </div>
-        </motion.div>
-      );
-    }
-
-    return null;
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -475,109 +273,7 @@ Age: ${applicationData.age}
 
       {/* Application Section */}
       <section id="apply" className="py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800">
-            Apply Now
-          </h2>
-
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            {renderStatusMessage()}
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    disabled={isSubmitting}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    disabled={isSubmitting}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
-                    placeholder="Enter your email address"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
-                    Academic Qualification *
-                  </label>
-                  <select
-                    name="qualification"
-                    value={formData.qualification}
-                    onChange={handleInputChange}
-                    disabled={isSubmitting}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <option value="">Select qualification</option>
-                    <option value="BSc">BSc (Bachelor of Science)</option>
-                    <option value="HND">HND (Higher National Diploma)</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
-                    Age *
-                  </label>
-                  <input
-                    type="number"
-                    name="age"
-                    value={formData.age}
-                    onChange={handleInputChange}
-                    disabled={isSubmitting}
-                    min="18"
-                    max="100"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
-                    placeholder="Enter your age"
-                  />
-                </div>
-              </div>
-
-              <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
-                <p className="mb-2">
-                  <strong>Note:</strong> No documents are required at this
-                  stage. If shortlisted, you will be contacted for document
-                  verification.
-                </p>
-                <p>Fields marked with * are required.</p>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg text-lg font-semibold transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                    Submitting Application...
-                  </>
-                ) : (
-                  "Submit Application"
-                )}
-              </button>
-            </form>
-          </div>
-        </div>
+        <ScholarshipForm />
       </section>
 
       {/* Contact Section */}
@@ -615,12 +311,6 @@ Age: ${applicationData.age}
             >
               <Instagram className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
             </Link>
-            {/* <Link to={"#"}>
-              <Twitter className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
-            </Link>
-            <Link to={"#"}>
-              <Linkedin className="w-8 h-8 text-green-400 hover:text-white cursor-pointer transition-colors" />
-            </Link> */}
             <Link
               to={
                 "https://www.facebook.com/people/Automatons-Mobility-and-Software-Services/61579161457339/?sk=about"
