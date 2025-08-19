@@ -18,8 +18,7 @@ const DocumentUpload = ({ formData, setFormData, errors, setErrors }) => {
   const validateFile = (file, type) => {
     const maxSize = 5 * 1024 * 1024; // 5MB
     const allowedTypes = {
-      // qualification: ["application/pdf", "image/jpeg", "image/png"],
-      qualification: ["application/pdf"],
+      qualification: ["application/pdf", "image/jpeg", "image/png"],
       passport: ["image/jpeg", "image/png"],
     };
 
@@ -280,8 +279,7 @@ const DocumentUpload = ({ formData, setFormData, errors, setErrors }) => {
           title="Academic Qualification Certificate"
           description="Upload your original academic qualification certificate"
           icon={FileText}
-          // acceptedFormats=".pdf,.jpg,.jpeg,.png"
-          acceptedFormats=".pdf only"
+          acceptedFormats=".pdf,.jpg,.jpeg,.png"
           inputRef={qualificationInputRef}
         />
 

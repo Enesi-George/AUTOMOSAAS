@@ -29,6 +29,8 @@ const ScholarshipForm = () => {
     email: "",
     qualification: "",
     age: "",
+    university: "",
+    courseOfStudy: "",
     termsAccepted: false,
     // Documents
     documents: {},
@@ -130,6 +132,8 @@ const ScholarshipForm = () => {
         email: applicationData.email,
         qualification: applicationData.qualification,
         age: applicationData.age,
+        university: applicationData.university,
+        courseOfStudy: applicationData.courseOfStudy,
         paymentReference: applicationData.paymentReference,
         paymentAmount: applicationData.paymentAmount,
         hasQualificationCertificate: !!applicationData.documents?.qualification,
@@ -143,6 +147,8 @@ Personal Information:
 - Email: ${applicationData.email}
 - Academic Qualification: ${applicationData.qualification}
 - Age: ${applicationData.age}
+- Preferred University: ${applicationData.university}
+- Course of Study: ${applicationData.courseOfStudy}
 
 Documents Submitted:
 - Qualification Certificate: ${applicationData.documents?.qualification?.name || 'Not uploaded'}
@@ -156,7 +162,7 @@ Payment Information:
 Application ID: AUTOSAAS-${Date.now()}
 
 --- Submitted via AUTOSAAS Initiative Scholarship Portal ---`,
-        _subject: "New AUTOSAAS Initiative Scholarship Application - Payment Completed",
+        _subject: `New AUTOSAAS Initiative Scholarship Application - ${applicationData.university} - ${applicationData.courseOfStudy}`,
         _replyto: applicationData.email,
       };
 

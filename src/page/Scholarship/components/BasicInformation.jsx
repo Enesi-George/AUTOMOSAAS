@@ -6,6 +6,71 @@ import TermsModal from "./TermsModal";
 const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
   const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
 
+  // Course options organized by category
+  const courseOptions = [
+    {
+      category: "Engineering & Natural Sciences",
+      courses: [
+        "Chemical Engineering",
+        "Mechanical Engineering", 
+        "Electrical Engineering",
+        "Computer Science",
+        "Cyber Security",
+        "Engineering Physics",
+        "Applied Mathematics",
+        "Biochemistry and Molecular Biology",
+        "Geosciences",
+        "Physics"
+      ]
+    },
+    {
+      category: "Business",
+      courses: [
+        "Business Administration (MBA)",
+        "Business Analytics",
+        "Energy Business",
+        "Accounting",
+        "Finance",
+        "International Business"
+      ]
+    },
+    {
+      category: "Arts & Sciences",
+      courses: [
+        "English Language Studies",
+        "Anthropology",
+        "Sociology",
+        "History",
+        "Environmental Science",
+        "Geology and Earth Science",
+        "Museum Science and Management"
+      ]
+    },
+    {
+      category: "Psychology & Behavioral Sciences",
+      courses: [
+        "Clinical Psychology",
+        "Industrial-Organizational Psychology"
+      ]
+    },
+    {
+      category: "Health Sciences",
+      courses: [
+        "Athletic Training",
+        "Speech-Language Pathology",
+        "Nursing"
+      ]
+    },
+    {
+      category: "Education & Fine Arts",
+      courses: [
+        "Mathematics Teacher Education",
+        "Music Teacher Education",
+        "Fine Arts"
+      ]
+    }
+  ];
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -24,7 +89,7 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
 
   const validateStep = () => {
     const newErrors = {};
-    const { fullName, email, qualification, age, university, termsAccepted } = formData;
+    const { fullName, email, qualification, age, university, courseOfStudy, termsAccepted } = formData;
 
     if (!fullName.trim()) {
       newErrors.fullName = "Please enter your full name";
@@ -53,6 +118,10 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
 
     if (!university) {
       newErrors.university = "Please select your preferred university";
+    }
+
+    if (!courseOfStudy) {
+      newErrors.courseOfStudy = "Please select your preferred course of study";
     }
 
     if (!termsAccepted) {
@@ -208,7 +277,7 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
           }`}
         >
           <option value="">Select your preferred university</option>
-          <option value="University of Tulsa">The University of Tulsa</option>
+          <option value="University of Tulsa">The University of Tulsa (Oklahoma USA)</option>
           <option value="Harvard University" disabled className="text-gray-400">
             Harvard University (Not Available)
           </option>
@@ -234,6 +303,45 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
         )}
         <p className="text-sm text-gray-500 mt-2">
           Currently, only The University of Tulsa is available for applications. More universities will be added soon.
+        </p>
+      </div>
+
+      {/* Course of Study Selection */}
+      <div>
+        <label className="block text-gray-700 font-semibold mb-2">
+          Preferred Course of Study *
+        </label>
+        <select
+          name="courseOfStudy"
+          value={formData.courseOfStudy || ""}
+          onChange={handleInputChange}
+          className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors ${
+            errors.courseOfStudy ? "border-red-500" : "border-gray-300"
+          }`}
+        >
+          <option value="">Select your preferred course</option>
+          {courseOptions.map((category, categoryIndex) => (
+            <optgroup key={categoryIndex} label={category.category}>
+              {category.courses.map((course, courseIndex) => (
+                <option key={`${categoryIndex}-${courseIndex}`} value={course}>
+                  {course}
+                </option>
+              ))}
+            </optgroup>
+          ))}
+        </select>
+        {errors.courseOfStudy && (
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-red-600 text-sm mt-1 flex items-center"
+          >
+            <AlertCircle className="w-4 h-4 mr-1" />
+            {errors.courseOfStudy}
+          </motion.p>
+        )}
+        <p className="text-sm text-gray-500 mt-2">
+          All courses listed are available for master's degree programs at The University of Tulsa.
         </p>
       </div>
 
@@ -276,7 +384,7 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
       </div>
 
       {/* Success Message */}
-      {formData.fullName && formData.email && formData.qualification && formData.age && formData.university && formData.termsAccepted && (
+      {formData.fullName && formData.email && formData.qualification && formData.age && formData.university && formData.courseOfStudy && formData.termsAccepted && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -298,7 +406,7 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
 
 BasicInformation.validateStep = (formData) => {
   const errors = {};
-  const { fullName, email, qualification, age, university, termsAccepted } = formData;
+  const { fullName, email, qualification, age, university, courseOfStudy, termsAccepted } = formData;
 
   if (!fullName?.trim()) {
     errors.fullName = "Please enter your full name";
@@ -327,6 +435,10 @@ BasicInformation.validateStep = (formData) => {
 
   if (!university) {
     errors.university = "Please select your preferred university";
+  }
+
+  if (!courseOfStudy) {
+    errors.courseOfStudy = "Please select your preferred course of study";
   }
 
   if (!termsAccepted) {
