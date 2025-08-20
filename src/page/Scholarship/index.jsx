@@ -154,7 +154,7 @@ const ScholarshipPage = () => {
                 <li>• Visa & Travel Logistics</li>
                 <li>• Tuition & Academic Expenses</li>
                 <li>• Accommodation</li>
-                <li>• Living Allowance</li>
+                <li>• Living Allowance for the entire duration for study</li>
               </ul>
             </div>
 
@@ -165,9 +165,8 @@ const ScholarshipPage = () => {
               </h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• Open to all educational backgrounds</li>
-                <li>• General inclusiveness focus</li>
-                <li>• Logic-based screening</li>
-                <li>• Equal opportunity assessment</li>
+                <li>• Courses selected to ensure general inclusiveness</li>
+                <li>• Screening based on general Knowledge and logic, not academic specifization</li>
               </ul>
             </div>
 
@@ -184,12 +183,12 @@ const ScholarshipPage = () => {
 
             <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
               <Brain className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-xl font-bold mb-4">Selection Process</h3>
+              <h3 className="text-xl font-bold mb-4">Applicaion/Selection Process</h3>
               <ul className="space-y-2 text-gray-700">
-                <li>• Online application portal</li>
-                <li>• General knowledge tests</li>
+                <li>• Apply via the offical online portal</li>
+                <li>• General knowledge assessments</li>
                 <li>• Logic-based evaluations</li>
-                <li>• Merit-based matching</li>
+                <li>• Merit-based selection</li>
               </ul>
             </div>
           </div>
