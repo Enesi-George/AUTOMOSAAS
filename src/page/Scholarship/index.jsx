@@ -13,6 +13,7 @@ import {
   Instagram,
   MapPin,
   Facebook,
+  SquarePen,
 } from "lucide-react";
 import ScholarBanner from "/scholar-01.png";
 import StudentStudying from "/scholar-02.jpg";
@@ -21,7 +22,6 @@ import { Link } from "react-router-dom";
 import ScholarshipForm from "./components/ScholarshipForm";
 
 const ScholarshipPage = () => {
-
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -112,31 +112,73 @@ const ScholarshipPage = () => {
       {/* Scholarship Details */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
             Scholarship Details
           </h2>
+          <div className="text-gray-700 text-lg mb-16">
+            <p>
+              The AUTOSAAS Initiative is a transformative scholarship program
+              designed to empower Nigerian graduates by sponsoring them to
+              pursue master’s degrees at accredited universities across the
+              United States and Europe. At least ten candidates will be
+              selected, and the initiative will provide comprehensive support
+              covering visa arrangements, travel logistics, tuition fees,
+              academic expenses, accommodation, and a living allowance for the
+              entire duration of their studies.{" "}
+            </p>
+
+            <p>
+              What sets AUTOSAAS apart is its commitment to inclusivity. The
+              program is open to graduates from all academic disciplines, and
+              the selection process is carefully designed to ensure fairness.
+              Rather than relying on specialized academic knowledge, candidates
+              are evaluated through general knowledge and logic-based
+              assessments, allowing individuals from diverse educational
+              backgrounds to compete on equal footing. The courses and
+              institutions chosen for the program reflect this inclusive
+              philosophy, ensuring that no field of study is left behind.
+            </p>
+
+            <p>
+              This scholarship isn’t just about funding education—it’s about
+              opening doors, leveling the playing field, and investing in the
+              potential of Nigerian talent to thrive on a global stage.
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
               <FileText className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-xl font-bold mb-4">Eligibility Criteria</h3>
+              <h3 className="text-xl font-bold mb-4">Scholarship Coverage</h3>
               <ul className="space-y-2 text-gray-700">
-                <li>• Age: 18 years and above</li>
-                <li>
-                  • Academic: BSc or HND from accredited Nigerian institution
-                </li>
-                <li>• Must meet entry criteria of partner institutions</li>
+                <li>• Visa & Travel Logistics</li>
+                <li>• Tuition & Academic Expenses</li>
+                <li>• Accommodation</li>
+                <li>• Living Allowance</li>
               </ul>
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
               <Users className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-xl font-bold mb-4">Application Process</h3>
+              <h3 className="text-xl font-bold mb-4">
+                Inclusivity & Accessibility
+              </h3>
               <ul className="space-y-2 text-gray-700">
-                <li>• Apply through official online portal</li>
-                <li>• Deadlines months before sessions</li>
-                <li>• No documents needed initially</li>
-                <li>• Shortlisted candidates provide proof</li>
+                <li>• Open to all educational backgrounds</li>
+                <li>• General inclusiveness focus</li>
+                <li>• Logic-based screening</li>
+                <li>• Equal opportunity assessment</li>
+              </ul>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+              <SquarePen className="w-12 h-12 text-green-600 mb-4" />
+              <h3 className="text-xl font-bold mb-4">Eligibility Criteria</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Age: 18 years and above</li>
+                <li>• BSc/HND from accredited institution</li>
+                <li>• Meet partner university requirements</li>
+                <li>• Nigerian citizenship</li>
               </ul>
             </div>
 
@@ -144,21 +186,10 @@ const ScholarshipPage = () => {
               <Brain className="w-12 h-12 text-green-600 mb-4" />
               <h3 className="text-xl font-bold mb-4">Selection Process</h3>
               <ul className="space-y-2 text-gray-700">
-                <li>• General knowledge assessments</li>
+                <li>• Online application portal</li>
+                <li>• General knowledge tests</li>
                 <li>• Logic-based evaluations</li>
-                <li>• Merit-based selection</li>
-                <li>• Matched with preferred institutions</li>
-              </ul>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
-              <RefreshCw className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-xl font-bold mb-4">Renewal Terms</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li>• Based on academic performance</li>
-                <li>• Continued commitment required</li>
-                <li>• Personal development focus</li>
-                <li>• Societal contribution expected</li>
+                <li>• Merit-based matching</li>
               </ul>
             </div>
           </div>
