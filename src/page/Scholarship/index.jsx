@@ -176,7 +176,6 @@ const ScholarshipPage = () => {
               <ul className="space-y-2 text-gray-700">
                 <li>• Age: 18 years and above</li>
                 <li>• BSc/HND from accredited institution</li>
-                <li>• Meet partner university requirements</li>
                 <li>• Nigerian citizenship</li>
               </ul>
             </div>
@@ -186,8 +185,7 @@ const ScholarshipPage = () => {
               <h3 className="text-xl font-bold mb-4">Applicaion/Selection Process</h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• Apply via the offical online portal</li>
-                <li>• General knowledge assessments</li>
-                <li>• Logic-based evaluations</li>
+                <li>• General knowledge and logic based assessment</li>
                 <li>• Merit-based selection</li>
               </ul>
             </div>
@@ -199,11 +197,11 @@ const ScholarshipPage = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-800">
-            Funding & Enrollment Fee
+            Application Deadline
           </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            We cover tuition, visa processing, logistics, and institutional
-            incentives to ensure your educational journey is fully supported.
+          <p className="text-xl text-gray-700 max-w-4xl mx-auto">
+            The application deadline for the AUTOSAAS Initiative Scholarship is
+           <strong> January 30, 2026</strong>. Don't miss this opportunity to transform your future!
           </p>
         </div>
       </section>
