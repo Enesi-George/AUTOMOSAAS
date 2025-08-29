@@ -73,10 +73,18 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
+    
+    if (name === "terms") {
+      setFormData({
+        ...formData,
+        [name]: checked ? "yes" : "false",
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: type === "checkbox" ? checked : value,
+      });
+    }
     
     // Clear any previous errors when user starts typing
     if (errors[name]) {
@@ -89,12 +97,12 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
 
   const validateStep = () => {
     const newErrors = {};
-    const { fullName, email, qualification, age, university, courseOfStudy, termsAccepted } = formData;
+    const { full_name, email, qualification, age, university, course, terms } = formData;
 
-    if (!fullName.trim()) {
-      newErrors.fullName = "Please enter your full name";
-    } else if (fullName.trim().length < 2) {
-      newErrors.fullName = "Full name must be at least 2 characters long";
+    if (!full_name.trim()) {
+      newErrors.full_name = "Please enter your full name";
+    } else if (full_name.trim().length < 2) {
+      newErrors.full_name = "Full name must be at least 2 characters long";
     }
 
     if (!email.trim()) {
@@ -120,12 +128,12 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
       newErrors.university = "Please select your preferred university";
     }
 
-    if (!courseOfStudy) {
-      newErrors.courseOfStudy = "Please select your preferred course of study";
+    if (!course) {
+      newErrors.course = "Please select your preferred course of study";
     }
 
-    if (!termsAccepted) {
-      newErrors.termsAccepted = "You must accept the terms and conditions to proceed";
+    if (terms !== "yes") {
+      newErrors.terms = "You must accept the terms and conditions to proceed";
     }
 
     setErrors(newErrors);
@@ -152,22 +160,22 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
           </label>
           <input
             type="text"
-            name="fullName"
-            value={formData.fullName}
+            name="full_name"
+            value={formData.full_name}
             onChange={handleInputChange}
             className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors ${
-              errors.fullName ? "border-red-500" : "border-gray-300"
+              errors.full_name ? "border-red-500" : "border-gray-300"
             }`}
             placeholder="Enter your full name"
           />
-          {errors.fullName && (
+          {errors.full_name && (
             <motion.p
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-red-600 text-sm mt-1 flex items-center"
             >
               <AlertCircle className="w-4 h-4 mr-1" />
-              {errors.fullName}
+              {errors.full_name}
             </motion.p>
           )}
         </div>
@@ -312,11 +320,11 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
           Preferred Course of Study *
         </label>
         <select
-          name="courseOfStudy"
-          value={formData.courseOfStudy || ""}
+          name="course"
+          value={formData.course || ""}
           onChange={handleInputChange}
           className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors ${
-            errors.courseOfStudy ? "border-red-500" : "border-gray-300"
+            errors.course ? "border-red-500" : "border-gray-300"
           }`}
         >
           <option value="">Select your preferred course</option>
@@ -330,14 +338,14 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
             </optgroup>
           ))}
         </select>
-        {errors.courseOfStudy && (
+        {errors.course && (
           <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-red-600 text-sm mt-1 flex items-center"
           >
             <AlertCircle className="w-4 h-4 mr-1" />
-            {errors.courseOfStudy}
+            {errors.course}
           </motion.p>
         )}
         <p className="text-sm text-gray-500 mt-2">
@@ -350,11 +358,11 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
         <div className="flex items-start space-x-3">
           <input
             type="checkbox"
-            name="termsAccepted"
-            checked={formData.termsAccepted}
+            name="terms"
+            checked={formData.terms === "yes"}
             onChange={handleInputChange}
             className={`h-5 w-5 accent-green-600 text-green-600 focus:ring-green-500 border-gray-300 rounded mt-1 ${
-              errors.termsAccepted ? "border-red-500" : ""
+              errors.terms ? "border-red-500" : ""
             }`}
           />
           <div>
@@ -369,14 +377,14 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
               </button>{" "}
               *
             </p>
-            {errors.termsAccepted && (
+            {errors.terms && (
               <motion.p
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-red-600 text-sm mt-1 flex items-center"
               >
                 <AlertCircle className="w-4 h-4 mr-1" />
-                {errors.termsAccepted}
+                {errors.terms}
               </motion.p>
             )}
           </div>
@@ -384,7 +392,7 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
       </div>
 
       {/* Success Message */}
-      {formData.fullName && formData.email && formData.qualification && formData.age && formData.university && formData.courseOfStudy && formData.termsAccepted && (
+      {formData.full_name && formData.email && formData.qualification && formData.age && formData.university && formData.course && formData.terms === "yes" && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -406,12 +414,12 @@ const BasicInformation = ({ formData, setFormData, errors, setErrors }) => {
 
 BasicInformation.validateStep = (formData) => {
   const errors = {};
-  const { fullName, email, qualification, age, university, courseOfStudy, termsAccepted } = formData;
+  const { full_name, email, qualification, age, university, course, terms } = formData;
 
-  if (!fullName?.trim()) {
-    errors.fullName = "Please enter your full name";
-  } else if (fullName.trim().length < 2) {
-    errors.fullName = "Full name must be at least 2 characters long";
+  if (!full_name?.trim()) {
+    errors.full_name = "Please enter your full name";
+  } else if (full_name.trim().length < 2) {
+    errors.full_name = "Full name must be at least 2 characters long";
   }
 
   if (!email?.trim()) {
@@ -437,12 +445,12 @@ BasicInformation.validateStep = (formData) => {
     errors.university = "Please select your preferred university";
   }
 
-  if (!courseOfStudy) {
-    errors.courseOfStudy = "Please select your preferred course of study";
+  if (!course) {
+    errors.course = "Please select your preferred course of study";
   }
 
-  if (!termsAccepted) {
-    errors.termsAccepted = "You must accept the terms and conditions to proceed";
+  if (terms !== "yes") {
+    errors.terms = "You must accept the terms and conditions to proceed";
   }
 
   return {
