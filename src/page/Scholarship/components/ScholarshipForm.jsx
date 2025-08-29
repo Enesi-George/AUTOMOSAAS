@@ -1,44 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  ArrowLeft, 
-  ArrowRight, 
-  CheckCircle, 
+import {
+  ArrowLeft,
+  ArrowRight,
+  CheckCircle,
   AlertCircle,
   User,
   FileText,
   CreditCard,
-  Loader2
+  Loader2,
 } from "lucide-react";
 import BasicInformation from "./BasicInformation";
 import DocumentUpload from "./DocumentUpload";
 import Payment from "./Payment";
-
-const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_URL;
+import { useRegisterMutation } from "../../../hooks/useRegisterMutation";
+import PaymentCallbackModal from "./PaymentCallbackModal";
 
 const ScholarshipForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [submitMessage, setSubmitMessage] = useState("");
   const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
     // Basic Information
-    fullName: "",
+    full_name: "",
     email: "",
     qualification: "",
     age: "",
     university: "",
-    courseOfStudy: "",
-    termsAccepted: false,
+    course: "",
+    terms: "false",
     // Documents
     documents: {},
-    // Payment
-    paymentReference: null,
-    paymentAmount: null,
-    paymentStatus: null,
   });
+
+  // Use the register mutation
+  const { mutate: registerUser, isPending: isSubmitting } =
+    useRegisterMutation();
 
   const steps = [
     {
@@ -47,7 +46,7 @@ const ScholarshipForm = () => {
       description: "Personal details",
       icon: User,
       component: BasicInformation,
-      validateStep: BasicInformation.validateStep
+      validateStep: BasicInformation.validateStep,
     },
     {
       id: 1,
@@ -55,7 +54,7 @@ const ScholarshipForm = () => {
       description: "Required documents",
       icon: FileText,
       component: DocumentUpload,
-      validateStep: DocumentUpload.validateStep
+      validateStep: DocumentUpload.validateStep,
     },
     {
       id: 2,
@@ -63,8 +62,8 @@ const ScholarshipForm = () => {
       description: "Application fee",
       icon: CreditCard,
       component: Payment,
-      validateStep: Payment.validateStep
-    }
+      validateStep: null,
+    },
   ];
 
   const currentStepData = steps[currentStep];
@@ -72,6 +71,11 @@ const ScholarshipForm = () => {
 
   const isStepCompleted = (stepIndex) => {
     const step = steps[stepIndex];
+
+    if (stepIndex === 2) {
+      return false;
+    }
+
     if (step.validateStep) {
       return step.validateStep(formData).isValid;
     }
@@ -79,10 +83,15 @@ const ScholarshipForm = () => {
   };
 
   const handleNext = () => {
-    const validation = currentStepData.validateStep 
+    if (currentStep === 2) {
+      submitApplication();
+      return;
+    }
+
+    const validation = currentStepData.validateStep
       ? currentStepData.validateStep(formData)
       : { isValid: true, errors: {} };
-    
+
     if (validation.isValid) {
       setErrors({});
       if (currentStep < steps.length - 1) {
@@ -100,103 +109,34 @@ const ScholarshipForm = () => {
     }
   };
 
-  const handlePaymentSuccess = async (paymentData) => {
-    // Update form data with payment information
-    const updatedFormData = {
-      ...formData,
-      paymentReference: paymentData.reference,
-      paymentAmount: paymentData.amount,
-      paymentStatus: paymentData.status,
-    };
-    
-    setFormData(updatedFormData);
-    
-    // Submit the complete application
-    await submitApplication(updatedFormData);
-  };
+  const submitApplication = () => {
+    registerUser(formData, {
+      onSuccess: (data) => {
+        if (data.status) {
+          setSubmitStatus("success");
+          setSubmitMessage(
+            "Application submitted successfully! Redirecting to payment..."
+          );
 
-  const submitApplication = async (applicationData) => {
-    if (!FORMSPREE_ENDPOINT) {
-      console.error("Missing FORMSPREE_ENDPOINT environment variable!");
-      setSubmitStatus("error");
-      setSubmitMessage("Configuration error. Please contact support.");
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      // Prepare the submission data
-      const submissionData = {
-        name: applicationData.fullName,
-        email: applicationData.email,
-        qualification: applicationData.qualification,
-        age: applicationData.age,
-        university: applicationData.university,
-        courseOfStudy: applicationData.courseOfStudy,
-        paymentReference: applicationData.paymentReference,
-        paymentAmount: applicationData.paymentAmount,
-        hasQualificationCertificate: !!applicationData.documents?.qualification,
-        hasPassportPhoto: !!applicationData.documents?.passport,
-        qualificationCertificateName: applicationData.documents?.qualification?.name,
-        passportPhotoName: applicationData.documents?.passport?.name,
-        message: `New AUTOSAAS Initiative Scholarship Application:
-
-Personal Information:
-- Full Name: ${applicationData.fullName}
-- Email: ${applicationData.email}
-- Academic Qualification: ${applicationData.qualification}
-- Age: ${applicationData.age}
-- Preferred University: ${applicationData.university}
-- Course of Study: ${applicationData.courseOfStudy}
-
-Documents Submitted:
-- Qualification Certificate: ${applicationData.documents?.qualification?.name || 'Not uploaded'}
-- Passport Photo: ${applicationData.documents?.passport?.name || 'Not uploaded'}
-
-Payment Information:
-- Payment Reference: ${applicationData.paymentReference}
-- Amount Paid: ₦${applicationData.paymentAmount?.toLocaleString() || 'Not paid'}
-- Payment Status: ${applicationData.paymentStatus || 'Pending'}
-
-Application ID: AUTOSAAS-${Date.now()}
-
---- Submitted via AUTOSAAS Initiative Scholarship Portal ---`,
-        _subject: `New AUTOSAAS Initiative Scholarship Application - ${applicationData.university} - ${applicationData.courseOfStudy}`,
-        _replyto: applicationData.email,
-      };
-
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submissionData),
-      });
-
-      if (response.ok) {
-        setSubmitStatus("success");
-        setSubmitMessage("Your scholarship application has been submitted successfully!");
-        
-        // Clean up file URLs to prevent memory leaks
-        if (applicationData.documents) {
-          Object.values(applicationData.documents).forEach(doc => {
-            if (doc.preview) {
-              URL.revokeObjectURL(doc.preview);
-            }
-          });
+          // Redirect to payment page
+          setTimeout(() => {
+            window.location.href = data.data.authorization_url;
+          }, 2000);
+        } else {
+          setSubmitStatus("error");
+          setSubmitMessage(data.message || "Failed to submit application");
         }
-      } else {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to submit application");
-      }
-    } catch (error) {
-      console.error("Application submission error:", error);
-      setSubmitStatus("error");
-      setSubmitMessage("Failed to submit application. Please try again or contact support.");
-    } finally {
-      setIsSubmitting(false);
-    }
+      },
+      onError: (error) => {
+        console.error("Application submission error:", error);
+        setSubmitStatus("error");
+        setSubmitMessage(
+          error.response?.data?.message ||
+            error.message ||
+            "Failed to submit application. Please try again or contact support."
+        );
+      },
+    });
   };
 
   const StepIndicator = () => (
@@ -204,7 +144,7 @@ Application ID: AUTOSAAS-${Date.now()}
       {steps.map((step, index) => {
         const Icon = step.icon;
         const isActive = index === currentStep;
-        const isCompleted = index < currentStep || isStepCompleted(index);
+        const isCompleted = isStepCompleted(index);
         const isAccessible = index <= currentStep;
 
         return (
@@ -222,33 +162,37 @@ Application ID: AUTOSAAS-${Date.now()}
                   : "bg-gray-50 text-gray-400 cursor-not-allowed"
               }`}
             >
-              <div className={`flex items-center justify-center w-10 h-10 rounded-full ${
-                isActive
-                  ? "bg-green-600 text-white"
-                  : isCompleted
-                  ? "bg-green-500 text-white"
-                  : "bg-gray-300 text-gray-600"
-              }`}>
-                {isCompleted && index < currentStep ? (
+              <div
+                className={`flex items-center justify-center w-10 h-10 rounded-full ${
+                  isActive
+                    ? "bg-green-600 text-white"
+                    : isCompleted
+                    ? "bg-green-500 text-white"
+                    : "bg-gray-300 text-gray-600"
+                }`}
+              >
+                {isCompleted ? (
                   <CheckCircle className="w-5 h-5" />
                 ) : (
                   <Icon className="w-5 h-5" />
                 )}
               </div>
               <div className="hidden sm:block text-left">
-                <div className={`font-medium ${isActive ? "text-green-800" : ""}`}>
+                <div
+                  className={`font-medium ${isActive ? "text-green-800" : ""}`}
+                >
                   {step.title}
                 </div>
-                <div className="text-sm opacity-75">
-                  {step.description}
-                </div>
+                <div className="text-sm opacity-75">{step.description}</div>
               </div>
             </button>
-            
+
             {index < steps.length - 1 && (
-              <div className={`hidden sm:block flex-1 h-px mx-4 ${
-                index < currentStep ? "bg-green-300" : "bg-gray-200"
-              }`} />
+              <div
+                className={`hidden sm:block flex-1 h-px mx-4 ${
+                  isCompleted ? "bg-green-300" : "bg-gray-200"
+                }`}
+              />
             )}
           </React.Fragment>
         );
@@ -274,29 +218,29 @@ Application ID: AUTOSAAS-${Date.now()}
           Previous
         </button>
 
-        {currentStep < steps.length - 1 ? (
-          <button
-            onClick={handleNext}
-            disabled={isSubmitting}
-            className="flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white rounded-lg font-medium transition-colors"
-          >
-            Next
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </button>
-        ) : (
-          <div className="text-right">
-            {formData.paymentReference ? (
-              <div className="text-green-600 font-medium flex items-center">
-                <CheckCircle className="w-5 h-5 mr-2" />
-                Application Completed
-              </div>
-            ) : (
-              <div className="text-gray-500 text-sm">
-                Complete payment to submit application
-              </div>
-            )}
-          </div>
-        )}
+        <button
+          onClick={handleNext}
+          disabled={isSubmitting}
+          className="flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white rounded-lg font-medium transition-colors"
+        >
+          {currentStep < steps.length - 1 ? (
+            <>
+              Next
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </>
+          ) : (
+            <>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  Submitting...
+                </>
+              ) : (
+                "Submit Application"
+              )}
+            </>
+          )}
+        </button>
       </div>
     );
   };
@@ -355,9 +299,7 @@ Application ID: AUTOSAAS-${Date.now()}
               setFormData={setFormData}
               errors={errors}
               setErrors={setErrors}
-              onPaymentSuccess={handlePaymentSuccess}
               isSubmitting={isSubmitting}
-              setIsSubmitting={setIsSubmitting}
             />
           </motion.div>
         </AnimatePresence>
@@ -366,8 +308,8 @@ Application ID: AUTOSAAS-${Date.now()}
 
         {/* Submitting Overlay */}
         {isSubmitting && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg p-8 flex items-center space-x-4">
+          <div className="fixed inset-0 bg-white/10 backdrop-blur-sm flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-8 flex items-center space-x-4 shadow-xl">
               <Loader2 className="w-8 h-8 animate-spin text-green-600" />
               <div>
                 <p className="font-semibold text-gray-800">
@@ -381,6 +323,8 @@ Application ID: AUTOSAAS-${Date.now()}
           </div>
         )}
       </div>
+          <PaymentCallbackModal />
+
     </div>
   );
 };
