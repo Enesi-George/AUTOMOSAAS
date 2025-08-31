@@ -16,9 +16,9 @@ export const useRegisterMutation = () => {
       submissionData.append("terms", formData.terms);
       
       // Add documents - access the .file property, not the entire object
-      if (formData.documents?.qualification?.file) {
-        submissionData.append("documents[]", formData.documents.qualification.file);
-      }
+      // if (formData.documents?.qualification?.file) {
+      //   submissionData.append("documents[]", formData.documents.qualification.file);
+      // }
       if (formData.documents?.passport?.file) {
         submissionData.append("documents[]", formData.documents.passport.file);
       }
