@@ -201,7 +201,7 @@ const ScholarshipPage = () => {
           </h2>
           <p className="text-xl text-gray-700 max-w-4xl mx-auto">
             The application deadline for the AUTOSAAS Initiative Scholarship is
-           <strong> January 30, 2026</strong>. Don't miss this opportunity to transform your future!
+           <strong> November 10, 2025</strong>. Don't miss this opportunity to transform your future!
           </p>
         </div>
       </section>
