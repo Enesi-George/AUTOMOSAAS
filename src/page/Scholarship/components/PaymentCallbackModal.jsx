@@ -20,7 +20,7 @@ const PaymentCallbackModal = () => {
 
     if ((trxref || reference) && !hasVerified.current) {
       setIsOpen(true);
-      hasVerified.current = true; // ✅ ref persists across StrictMode re-renders
+      hasVerified.current = true; 
       verifyPayment(trxref || reference);
     }
   }, []);

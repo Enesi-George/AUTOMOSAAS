@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 const Payment = ({ formData, isSubmitting }) => {
-  const PAYMENT_AMOUNT = 10000; // 10,000 naira
+  const PAYMENT_AMOUNT = 5500; // 10,000 naira
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-NG', {
