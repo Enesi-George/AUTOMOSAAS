@@ -277,7 +277,7 @@ const DocumentUpload = ({ formData, setFormData, errors, setErrors }) => {
         <FileUploadArea
           documentType="qualification"
           title="Academic Qualification Certificate"
-          description="Upload your original academic qualification certificate"
+          description="Upload academic certificate e.g., statement of result, certificates etc."
           icon={FileText}
           acceptedFormats=".pdf,.jpg,.jpeg,.png"
           inputRef={qualificationInputRef}
