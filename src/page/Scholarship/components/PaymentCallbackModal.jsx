@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, XCircle, Loader2, ExternalLink } from "lucide-react";
-import { paymentCallback } from "../../../services/register";
+import { getPaymentStatus } from "../../../services/register";
 import { useRef } from "react";
 
 const PaymentCallbackModal = () => {
@@ -26,17 +26,21 @@ const PaymentCallbackModal = () => {
   }, []);
 
   const verifyPayment = async (reference) => {
-    setTnxReference(reference)
+    setTnxReference(reference);
 
     try {
       setIsLoading(true);
       setError(null);
-      const response = await paymentCallback({ reference });
+      
+      // Use getPaymentStatus instead of paymentCallback to avoid double processing
+      const response = await getPaymentStatus(reference);
 
-      if (response.status && response.data.payment_status === "completed") {
+      if (response.status && response.data.status === "completed") {
         setPaymentStatus({
           status: "success",
-          ...response.data.user, // store user/payment details
+          amount: response.data.amount,
+          paid_at: response.data.paid_at,
+          email: response.data.email,
         });
       } else {
         setPaymentStatus({ status: "failed" });
@@ -123,6 +127,14 @@ const PaymentCallbackModal = () => {
                       </span>
                     </div>
                   )}
+                  {paymentStatus.email && (
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Email:</span>
+                      <span className="text-gray-800">
+                        {paymentStatus.email}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -156,7 +168,6 @@ const PaymentCallbackModal = () => {
               {isLoading ? "Please Wait..." : "Continue"}
             </button>
           </div>
-
         </div>
       </motion.div>
     </div>
