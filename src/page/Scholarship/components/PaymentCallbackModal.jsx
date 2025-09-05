@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, XCircle, Loader2, ExternalLink } from "lucide-react";
 import { getPaymentStatus } from "../../../services/register";
 import { useRef } from "react";
+import { paymentCallback } from "../../../services/register";
 
 const PaymentCallbackModal = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,9 @@ const PaymentCallbackModal = () => {
     try {
       setIsLoading(true);
       setError(null);
+      await paymentCallback({ reference });
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       
       // Use getPaymentStatus instead of paymentCallback to avoid double processing
       const response = await getPaymentStatus(reference);
@@ -122,7 +126,7 @@ const PaymentCallbackModal = () => {
                   {paymentStatus.paid_at && (
                     <div className="flex justify-between">
                       <span className="text-gray-600">Paid At:</span>
-                      <span className="text-gray-800">
+                      <span className="font-semibold text-green-700 capitalize">
                         {new Date(paymentStatus.paid_at).toLocaleString()}
                       </span>
                     </div>
@@ -130,7 +134,7 @@ const PaymentCallbackModal = () => {
                   {paymentStatus.email && (
                     <div className="flex justify-between">
                       <span className="text-gray-600">Email:</span>
-                      <span className="text-gray-800">
+                      <span className="font-semibold text-green-700 capitalize">
                         {paymentStatus.email}
                       </span>
                     </div>
