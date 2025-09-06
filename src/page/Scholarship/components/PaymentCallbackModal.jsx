@@ -160,7 +160,7 @@ const PaymentCallbackModal = () => {
                 Payment Successful!
               </h3>
               <p className="text-gray-600 mb-4">
-                {error || "There was an issue with your payment."}
+                {/* {error || "There was an issue with your payment."} */}
               </p>
               {/* <p className="text-sm text-gray-500 mb-4">
                 Please try again or contact support if the issue persists.
