@@ -28,11 +28,12 @@ const PaymentCallbackModal = () => {
 
   const verifyPayment = async (reference) => {
     setTnxReference(reference);
-    await paymentCallback({ reference });
 
     try {
       setIsLoading(true);
       setError(null);
+      await paymentCallback({ reference });
+
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // Use getPaymentStatus instead of paymentCallback to avoid double processing
