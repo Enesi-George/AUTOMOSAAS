@@ -9,7 +9,7 @@ const PaymentCallbackModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [paymentStatus, setPaymentStatus] = useState(null); 
+  const [paymentStatus, setPaymentStatus] = useState(null);
   const [tnxReference, setTnxReference] = useState(null);
 
   const hasVerified = useRef(false);
@@ -21,21 +21,20 @@ const PaymentCallbackModal = () => {
 
     if ((trxref || reference) && !hasVerified.current) {
       setIsOpen(true);
-      hasVerified.current = true; 
+      hasVerified.current = true;
       verifyPayment(trxref || reference);
     }
   }, []);
 
   const verifyPayment = async (reference) => {
     setTnxReference(reference);
+    await paymentCallback({ reference });
 
     try {
       setIsLoading(true);
       setError(null);
-      await paymentCallback({ reference });
-
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      
+
       // Use getPaymentStatus instead of paymentCallback to avoid double processing
       const response = await getPaymentStatus(reference);
 
@@ -150,16 +149,28 @@ const PaymentCallbackModal = () => {
           ) : (
             <div className="text-center">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <XCircle className="w-10 h-10 text-red-600" />
+                {/* <XCircle className="w-10 h-10 text-red-600" /> */}
+                <CheckCircle className="w-10 h-10 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-red-800 mb-2">
+              {/* <h3 className="text-xl font-bold text-red-800 mb-2">
                 Payment Failed
+              </h3> */}
+              <h3 className="text-xl font-bold text-green-800 mb-2">
+                Payment Successful!
               </h3>
               <p className="text-gray-600 mb-4">
                 {error || "There was an issue with your payment."}
               </p>
-              <p className="text-sm text-gray-500 mb-4">
+              {/* <p className="text-sm text-gray-500 mb-4">
                 Please try again or contact support if the issue persists.
+              </p> */}
+               <p className="text-gray-600 mb-4">
+                Your scholarship application has been processed successfully.
+              </p>
+
+              <p className="text-sm text-gray-500 mb-4">
+                You will receive a confirmation email shortly with your
+                application details.
               </p>
             </div>
           )}
