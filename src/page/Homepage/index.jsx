@@ -20,10 +20,10 @@ const HomePage = () => {
 
   return (
     <div className="w-full">
-      <ScholarshipModal
+      {/* <ScholarshipModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-      />
+      /> */}
       <Hero />
       <About />
       <VisionMission />

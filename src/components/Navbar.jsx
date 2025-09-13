@@ -16,14 +16,18 @@ const Navbar = () => {
     { name: "About", href: "#about", route: "/" },
     { name: "Services", href: "#services", route: "/" },
     { name: "Contact", href: "#contact", route: "/" },
-    { name: "Scholarship", href: "/scholarship", route: "/scholarship" },
+    // { name: "Scholarship", href: "/scholarship", route: "/scholarship" },
   ];
 
   // Show only Home and Scholarship on scholarship page
-  const menuItems = isScholarshipPage
-    ? allMenuItems.filter(
-        (item) => item.name === "Home" || item.name === "Scholarship"
-      )
+  // const menuItems = isScholarshipPage
+  //   ? allMenuItems.filter(
+  //       (item) => item.name === "Home" || item.name === "Scholarship"
+  //     )
+  //   : allMenuItems;
+
+    const menuItems = isScholarshipPage
+    ? allMenuItems
     : allMenuItems;
 
   const handleNavClick = (item) => {
@@ -31,7 +35,8 @@ const Navbar = () => {
 
     if (item.route === "/scholarship") {
       // Navigate to scholarship page
-      navigate("/scholarship");
+      navigate("/");
+      // navigate("/scholarship");
     } else if (item.href.startsWith("#")) {
       // Handle hash navigation
       if (location.pathname !== "/") {
