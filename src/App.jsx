@@ -3,6 +3,7 @@ import "./index.css";
 import HomePage from "./page/Homepage";
 import ScholarshipPage from "./page/Scholarship";
 import Navbar from "./components/Navbar";
+import { NotFound } from "./page/NotFound";
 
 const App = () => {
   return (
@@ -11,9 +12,10 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/scholarship" element={<ScholarshipPage />} />
-          <Route path="/apply" element={<ScholarshipPage />} />{" "}
-          {/* Add this route */}
+          {/* <Route path="/scholarship" element={<ScholarshipPage />} /> */}
+          {/* <Route path="/apply" element={<ScholarshipPage />} /> */}
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
